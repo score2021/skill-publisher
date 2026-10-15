@@ -1,0 +1,4 @@
+interface:
+  display_name: "z-Skill Publisher"
+  short_description: "从认可的会话流程创建 Skill，完成本地验收、公开打包与发布后复验"
+  default_prompt: "使用 $z-skill-publisher 将当前会话中我认可的流程整理成 skill，先完成本地编写和验收，暂不发布。"

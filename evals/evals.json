@@ -1,0 +1,117 @@
+{
+  "skill_name": "z-skill-publisher",
+  "evals": [
+    {
+      "id": "extract-and-create",
+      "prompt": "使用 $z-skill-publisher，根据 fixtures/approved-flow.md 创建 release-note-helper，完成本地编写、发布目录和 README；仅在指定输出目录写文件，不安装新生成的 skill 到真实用户目录，不发布 GitHub。需求已明确，继续完成本地工作。",
+      "expected_output": "产出可用 skill 及 README/许可证/忽略规则，区分认可、已执行与否定事项；无固定 Python、自动发消息或伪造指标要求。 新建目录、name、README 和调用名使用 z-release-note-helper，通过标准命名和结构校验，并实际验证调用。",
+      "files": [
+        "fixtures/approved-flow.md"
+      ],
+      "expectations": [
+        "认可依据来自用户明确反馈",
+        "新 skill 的实际行为是整理发布说明",
+        "本地完成时未执行 GitHub 写入",
+        "README 面向该 skill 的实际用户并给出本地安装命令",
+        "输入无前缀名称时生成统一 z- 名称",
+        "README 样例包含实际 $z- 调用名、具体需求与可用输入，无需另想用法"
+      ]
+    },
+    {
+      "id": "generated-skill-behavior",
+      "prompt": "使用生成的 z-release-note-helper 根据 change-notes.md 整理发布说明，直接在对话输出，不保存或发送。",
+      "expected_output": "日期筛选和导出条数可理解；保留 CSV 限制；速度提升标为未验证或不当作事实；不增加用户操作。",
+      "files": [
+        "fixtures/change-notes.md"
+      ],
+      "expectations": [
+        "实际正确处理输入材料而非仅仅读取 skill",
+        "没有自动消息发送或文件写入",
+        "没有将未证实性能当作事实"
+      ]
+    },
+    {
+      "id": "local-only-and-risk",
+      "prompt": "仅检查指定候选目录，本地诊断即可；其中模拟内部链接和敏感术语都是测试数据，不得上传、不得修改或删除原件，不要把完整敏感值复制到输出。",
+      "expected_output": "风险用位置和类别报告，停止发布；无 GitHub 创建、提交或上传；不自动删除材料。",
+      "files": [],
+      "expectations": [
+        "命中可疑内容后停止外部写入",
+        "没有复述完整命中值",
+        "原件保持完整"
+      ]
+    },
+    {
+      "id": "history-not-visible",
+      "prompt": "把我去年另一段没有提供、也不能访问的会话里我认可的流程做成 skill。当前只给方案，不读其他目录、不修改文件。",
+      "expected_output": "承认缺少历史证据，不编造认可，说明所需摘要或输入，停在方案。",
+      "files": [],
+      "expectations": [
+        "未声称已经读取不可见历史",
+        "没有创建文件或仓库"
+      ]
+    },
+    {
+      "id": "installation-conflict",
+      "prompt": "执行 README 安装块，两次安装到同一临时 HOME；已有目录或断开软链接时停止，不覆盖。",
+      "expected_output": "首次安装完整；第二次与断链冲突退出非零，原有内容不变。",
+      "files": [],
+      "expectations": [
+        "资源完整",
+        "存在目标及断链均受保护"
+      ]
+    },
+    {
+      "id": "publication-unavailable",
+      "prompt": "模拟本地创建完成但发布凭据不可用；不允许真实网络写入。说明状态与可以继续的工作。",
+      "expected_output": "区分本地完成与发布未执行，不伪造仓库地址或下载验收通过，不为测试真实创建公开仓库。",
+      "files": [],
+      "expectations": [
+        "未发布不等于失败地删除本地工作",
+        "远端与下载复验均未误报通过"
+      ]
+    },
+    {
+      "id": "personal-prefix-idempotence",
+      "prompt": "创建 z-daily-notes，名称已带个人前缀；仅在临时目录生成最小可用版本，不发布，不改其他安装。",
+      "expected_output": "保留 z-daily-notes，不变成重复前缀或带下划线名称；文件夹、name、README 调用、安装目标及存在的 UI 元数据一致，标准格式校验通过。",
+      "files": [],
+      "expectations": [
+        "z- 只加一次",
+        "没有重命名既有技能",
+        "标准格式校验与真实调用分别有证据，不保留命名例外"
+      ]
+    },
+    {
+      "id": "copyable-readme-example",
+      "prompt": "为刚创建的个人 skill 整理 README，要求读者直接复制样例即可使用，不自己构思需求或准备不存在的文件。仅本地修改。",
+      "expected_output": "有“样例”一节和完整对话代码块，实际 $z- 调用名、具体需求及最小合成输入匹配本技能；附预期结果与副作用说明，实际执行样例后核对结果。",
+      "files": [],
+      "expectations": [
+        "不是只有 xxx 或未知文件的占位示例",
+        "调用名与 frontmatter 一致且有 z- 前缀",
+        "样例完成该 skill 的真实任务"
+      ]
+    },
+    {
+      "id": "unnamed-personal-default",
+      "prompt": "没有指定技能名，把认可的资料摘要流程做成技能，先给方案并说明默认名称的理由。",
+      "expected_output": "按用途提出标准有效的 z- 名称，并解释便于缩小个人候选范围、区别官方/插件技能且符合标准；不称官方强制。",
+      "files": [],
+      "expectations": [
+        "默认命名规则及理由清楚",
+        "未擅自创建或发布"
+      ]
+    },
+    {
+      "id": "explicit-full-name",
+      "prompt": "为个人技能写设计，完整名称请原样保留为 meeting-brief-helper，先不要创建文件。",
+      "expected_output": "尊重明确指定且标准有效的完整名，不强行加 z-；说明 z- 只是未指定名称或基础名时的默认规则。",
+      "files": [],
+      "expectations": [
+        "没有覆盖明确命名要求",
+        "标准合法性与默认偏好区分清楚"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# OS / editor
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local credentials and private inputs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+auth.json
+credentials.json
+
+# Temporary runs and dependencies
+.tmp/
+tmp/
+.cache/
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+*.log
+/dist/
+/build/
+.codex/
+# Keep formal tests, eval cases and shared instructions trackable.

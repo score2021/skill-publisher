@@ -29,7 +29,7 @@ description: 从用户需求或当前可见会话中用户认可的流程创建�
 | --- | --- | --- |
 | 1 提炼 | 区分认可规则、候选经验、失败绕路，列目标行为与验收；敏感来源先隔离 | [authoring.md](references/authoring.md) |
 | 2 编写 | 写精简主流程；复杂条件放参考文件，重复且机械的操作才写脚本；保留用户硬要求 | [authoring.md](references/authoring.md) |
-| 3 打包 | 独立目录、明确文件清单、README、许可证和适用 .gitignore；先给实际可用的本地安装路径 | [readme.md](references/readme.md) |
+| 3 打包 | 独立目录、明确文件清单、README（含成果展示）、许可证和适用 .gitignore；先给实际可用的本地安装路径 | [readme.md](references/readme.md) |
 | 4 本地验收 | 结构、脚本、真实客户端加载及代表性行为；根据证据修复后复验 | [testing.md](references/testing.md) |
 | 5 检查与发布 | 复核来源、公司信息、秘密、文件与待提交内容；仅在具体发布授权内操作 | [publishing.md](references/publishing.md) |
 | 6 下载复验 | 全新下载远端提交，原样执行 README 安装，干净会话调用并执行任务，清理临时文件 | [testing.md](references/testing.md)、[publishing.md](references/publishing.md) |
@@ -45,6 +45,10 @@ description: 从用户需求或当前可见会话中用户认可的流程创建�
 ## README 的可复制样例
 
 每个生成 skill 的 README 必须有“样例”一节，至少一个完整的对话输入代码块：使用实际调用名（默认 `$z-…`），给出具体需求和最小必要的内联材料，让使用者复制后即可试用，不必自己构思提示词。`$xxxxskill 我的需求是xxx` 只能作写法说明，不能充当唯一可用样例。需要文件输入时先给合成文件内容及放置方式，不能引用不存在的私有文件。样例后简短说明预期结果、是否写文件及必要前置条件；未授权不放会真实上传或发送的默认演示。
+
+## README 的成果展示
+
+每个生成 skill 的 README 必须包含“成果展示”，用一个具体场景呈现最小输入、对应的实际输出或最终产物，并说明价值与关键边界。展示与可复制调用样例对应，优先复用已验收的合成案例；正文先展示关键成果，长内容按需链接全文。未执行的内容明确标为示意或未验证，不得冒充实测；摘录注明，不能改结论或省略影响判断的限制。文字、截图和附件均纳入发布范围与敏感信息检查。形式按任务选择，不强制图片或视频，详见 [readme.md](references/readme.md)。
 
 ## 验收与证据
 
